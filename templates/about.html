@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>About · AI Math Tutor</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}" />
+</head>
+<body>
+  <nav class="navbar">
+    <div class="nav-brand">🧮 AI Math Tutor</div>
+    <ul class="nav-links">
+      <li><a href="/">Home</a></li>
+      <li><a href="/solver">Solver</a></li>
+      <li><a href="/about" class="active">About</a></li>
+    </ul>
+  </nav>
+
+  <main class="container about-main">
+    <h1 class="page-title">About AI Math Tutor</h1>
+
+    <section class="card">
+      <h2>Project Overview</h2>
+      <p>AI Math Tutor is an intelligent, interactive educational tool that combines computer vision, OCR, and large language models to help students solve and understand algebraic equations.</p>
+      <p>By simply uploading a photo of a handwritten or printed algebra problem, students receive structured, step-by-step explanations and feedback on common mistakes.</p>
+    </section>
+
+    <section class="card">
+      <h2>Technology Stack</h2>
+      <div class="tech-grid">
+        <div class="tech-item"><span class="tech-badge">Python 3.9+</span>Core language</div>
+        <div class="tech-item"><span class="tech-badge">Flask 3.x</span>Web framework</div>
+        <div class="tech-item"><span class="tech-badge">Gemini 2.5 Flash</span>AI reasoning &amp; vision</div>
+        <div class="tech-item"><span class="tech-badge">EasyOCR</span>Text recognition</div>
+        <div class="tech-item"><span class="tech-badge">OpenCV</span>Image preprocessing</div>
+        <div class="tech-item"><span class="tech-badge">SymPy</span>Symbolic math solving</div>
+        <div class="tech-item"><span class="tech-badge">ReportLab</span>PDF generation</div>
+        <div class="tech-item"><span class="tech-badge">python-docx</span>Word export</div>
+        <div class="tech-item"><span class="tech-badge">MathJax</span>LaTeX rendering</div>
+      </div>
+    </section>
+
+    <section class="card">
+      <h2>Architecture</h2>
+      <pre class="arch-diagram">
+┌─────────────────────────────────────────────────┐
+│                  Browser (HTML/CSS/JS)           │
+│         Image Upload → LaTeX → Solution UI       │
+└──────────────────────┬──────────────────────────┘
+                       │ HTTP / REST API
+┌──────────────────────▼──────────────────────────┐
+│              Flask Backend (app.py)              │
+│   /api/image-to-latex   /api/solve-equation      │
+│   /api/mistake-check    /api/export-pdf          │
+└───┬─────────┬──────────┬──────────┬─────────────┘
+    │         │          │          │
+┌───▼──┐ ┌───▼──┐ ┌─────▼───┐ ┌───▼──────┐
+│ OCR  │ │Gemini│ │  SymPy  │ │  Export  │
+│Utils │ │Client│ │  Solver │ │  Utils   │
+└──────┘ └──────┘ └─────────┘ └──────────┘
+      </pre>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <p>© 2025 AI Math Tutor · Built with Gemini 2.5 Flash &amp; Flask</p>
+  </footer>
+</body>
+</html>

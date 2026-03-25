@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Solver · AI Math Tutor</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}" />
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js" async></script>
+</head>
+<body>
+  <nav class="navbar">
+    <div class="nav-brand">🧮 AI Math Tutor</div>
+    <ul class="nav-links">
+      <li><a href="/">Home</a></li>
+      <li><a href="/solver" class="active">Solver</a></li>
+      <li><a href="/about">About</a></li>
+    </ul>
+  </nav>
+
+  <main class="solver-main container">
+    <h1 class="page-title">Algebra Problem Solver</h1>
+
+    <!-- ── Upload Section ── -->
+    <section class="card upload-section">
+      <h2>📷 Upload Equation Image</h2>
+      <div class="drop-zone" id="dropZone">
+        <p>Drag &amp; drop your image here, or</p>
+        <label for="imageInput" class="btn btn-secondary">Browse File</label>
+        <input type="file" id="imageInput" accept="image/png,image/jpeg,image/webp" hidden />
+      </div>
+      <div id="imagePreview" class="image-preview hidden"></div>
+
+      <div class="action-row">
+        <button id="btnConvert" class="btn btn-primary" disabled>
+          <span class="btn-text">🔣 Convert to LaTeX</span>
+          <span class="spinner hidden"></span>
+        </button>
+      </div>
+    </section>
+
+    <!-- ── Equation Display ── -->
+    <section class="card equation-section hidden" id="equationSection">
+      <h2>Recognized Equation</h2>
+      <div class="latex-display" id="latexDisplay"></div>
+      <p class="confidence-label" id="confidenceLabel"></p>
+      <div class="action-row">
+        <button id="btnSolve" class="btn btn-primary">
+          <span class="btn-text">🧩 Solve Problem</span>
+          <span class="spinner hidden"></span>
+        </button>
+        <button id="btnCheckMistakes" class="btn btn-secondary" disabled>⚠ Check Mistakes</button>
+      </div>
+    </section>
+
+    <!-- ── Solution Section ── -->
+    <section class="card solution-section hidden" id="solutionSection">
+      <h2>Step-by-Step Solution</h2>
+      <div id="stepsContainer" class="steps-container"></div>
+      <div class="final-answer" id="finalAnswer"></div>
+
+      <!-- Export buttons -->
+      <div class="export-row">
+        <button id="btnExportPDF" class="btn btn-outline">📄 Download PDF</button>
+        <button id="btnExportWord" class="btn btn-outline">📝 Download Word</button>
+      </div>
+    </section>
+
+    <!-- ── Mistakes Section ── -->
+    <section class="card mistakes-section hidden" id="mistakesSection">
+      <h2>⚠ Detected Mistakes</h2>
+      <div id="mistakesContainer"></div>
+    </section>
+
+    <!-- ── Error Banner ── -->
+    <div id="errorBanner" class="error-banner hidden"></div>
+  </main>
+
+  <footer class="footer">
+    <p>© 2025 AI Math Tutor · Built with Gemini 2.5 Flash &amp; Flask</p>
+  </footer>
+
+  <script src="{{ url_for('static', filename='js/solver.js') }}"></script>
+</body>
+</html>
